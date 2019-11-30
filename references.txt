@@ -1,0 +1,3 @@
+https://github.com/Polymer/pwa-starter-kit-hn/blob/master/src/components/hn-comment.ts
+
+https://github.com/amitjakhu/dripicons-weather
