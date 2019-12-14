@@ -8,7 +8,8 @@ const weather = (state = {}, action) => {
         ...state,
         city: action.city,
         condition: action.condition,
-        fahr: action.fahr
+        fahr: action.fahr,
+        icon: action.icon
       }
     default:
       return state

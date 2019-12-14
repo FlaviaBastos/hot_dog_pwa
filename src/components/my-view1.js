@@ -12,6 +12,7 @@ import { html } from '@polymer/lit-element'
 import { PageViewElement } from './page-view-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../store.js'
+import * as weatherIcons from './my-icons.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js'
@@ -26,7 +27,8 @@ class MyView1 extends connect(store)(PageViewElement) {
     return {
       city: { type: String },
       condition: { type: String },
-      fahr: { type: String }
+      fahr: { type: String },
+      icon: { type: String }
     }
   }
 
@@ -91,9 +93,7 @@ class MyView1 extends connect(store)(PageViewElement) {
   }
 
   _loadActivities () {
-    console.log("IN LOAD ACTIVITIES")
     const games = ["fetch", "hide & seek", "indoor agility", "tug war"]
-    console.log(`Activities: ${games}`)
     
     return html`
       ${SharedStyles}
@@ -110,13 +110,51 @@ class MyView1 extends connect(store)(PageViewElement) {
     `
   }
 
+  _mapIcon (name) {
+    let svgIcon;
+
+    switch (name.toLowerCase()) {
+      case "clouds":
+        svgIcon = weatherIcons.clouds;
+        break;
+      case "drizzle":
+        svgIcon = weatherIcons.drizzle;
+        break;
+      case "fog":
+        svgIcon = weatherIcons.fog;
+        break;
+      case "lightning":
+        svgIcon = weatherIcons.lightning;
+        break;
+      case "rain":
+        svgIcon = weatherIcons.rain;
+        break;
+      case "raindrop":
+        svgIcon = weatherIcons.raindrop;
+        break;
+      case "snow":
+        svgIcon = weatherIcons.snow;
+        break;
+      case "sun":
+        svgIcon = weatherIcons.sun;
+        break;
+      default:
+        svgIcon = weatherIcons.fog;
+    }
+
+    return svgIcon;
+  }
+
   _render (props) {
+    let displayIcon = this._mapIcon(this.icon);
+
     return html`
       ${SharedStyles}
       <section>
         <h2>Current Condition</h2>
         <p>You're in ${this.city}, ${this.region}</p>
         <p>The temp is ${this.fahr} and the weather condition is ${this.condition}</p>
+        <p class="icon-wrap">${displayIcon}</p>
       </section>
       <section>
         <p>${this._checkStatus(this.fahr)}</p>
@@ -132,6 +170,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     this.city = state.weather.city
     this.condition = state.weather.condition
     this.fahr = state.weather.fahr
+    this.icon = state.weather.icon
   }
 }
 

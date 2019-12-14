@@ -56,5 +56,16 @@ export const SharedStyles = html`
     font-size: 30px;
     line-height: 64px;
   }
+
+  .icon-wrap {
+    display: block;
+    text-align: center;
+  }
+
+  .weather-icon {
+    height: 10vh;
+    width: 10vw;
+    fill: #E91E63;
+  }
 </style>
 `;

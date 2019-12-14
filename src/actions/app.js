@@ -113,32 +113,24 @@ export const fetchWeather = () => (dispatch) => {
     fetch(forecastEndpoint)
     .then(res => res.json())
     .then(response => {
-      console.log(`RESPONSE: ${response.name}`)
       let city = response.name
       let condition = response.weather[0].description
-      let icon = response.weather[0].icon
+      let icon = response.weather[0].main
       let fahr = response.main.temp
       console.log(`You're in ${city}, and temp is ${fahr}C. Weather condition is ${condition}. ICON: ${icon}`)
-      dispatch(receiveWeather(city, condition, fahr))
+      dispatch(receiveWeather(city, condition, fahr, icon))
     }) // end then response
     .catch(error => console.error('API Error:', error))
-    
-    // let iconEndpoint = `http://openweathermap.org/img/wn/${icon}@2x.png`
-    // fetch(iconEndpoint)
-    //   .then(res => res.json())
-    //   .then(response => {
-    //     console.log(`Icon response: ${response}`)       
-    //   })
-    //   .catch(error => console.error('Icon error: ', error))
   }, console.log('Unable to retrieve your location'));
 }
 
-export const receiveWeather = (city, condition, fahr) => {
-  console.log(`IN ACTION: city ${city}, ${fahr}`)
+export const receiveWeather = (city, condition, fahr, icon) => {
+  console.log(`IN ACTION: city ${city}, ${fahr}, ${icon}`)
   return {
     type: RECEIVE_WEATHER,
     city,
     condition,
-    fahr
+    fahr,
+    icon
   }
 }
