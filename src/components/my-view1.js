@@ -168,7 +168,7 @@ class MyView1 extends connect(store)(PageViewElement) {
       <section>
         <h2>Current Condition</h2>
         <p>You're in ${this.city}, ${this.region}</p>
-        <p>The temp is ${this.displayTemp ? this._fToC(this.fahr) : displayFahr} 
+        <p>The temp is ${this.displayTemp ? displayFahr : this._fToC(this.fahr) } 
         and the weather condition is ${this.condition}</p>
         <p class="center-wrap">${displayIcon}</p>
       </section>
@@ -188,7 +188,7 @@ class MyView1 extends connect(store)(PageViewElement) {
               id="toggleSwitch"
               on-click="${(e) => store.dispatch(changeTemp(e.currentTarget.checked))}"
           />
-          <label class="toggle-switch-label" htmlFor="toggleSwitch">°C
+          <label class="toggle-switch-label" htmlFor="toggleSwitch">°F
             <span class="toggle-switch-inner" />
             <span class="toggle-switch-switch" />
           </label>
