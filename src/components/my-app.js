@@ -147,7 +147,7 @@ class MyApp extends connect(store)(LitElement) {
 
       .main-content {
         padding-top: 64px;
-        min-height: 100vh;
+        min-height: 60vh;
       }
 
       .page {
@@ -163,6 +163,10 @@ class MyApp extends connect(store)(LitElement) {
         background: var(--app-drawer-background-color);
         color: var(--app-drawer-text-color);
         text-align: center;
+      }
+
+      footer a {
+        color: var(--app-section-odd-color); 
       }
 
       /* Wide layout: when the viewport width is bigger than 460px, layout
@@ -197,9 +201,7 @@ class MyApp extends connect(store)(LitElement) {
 
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
-        <a selected?="${_page === 'view1'}" href="/view1">View One</a>
-        <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
-        <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'view1'}" href="/view1">Home</a>
         <a selected?="${_page === 'about'}" href="/about">About</a>
       </nav>
     </app-header>
@@ -208,9 +210,7 @@ class MyApp extends connect(store)(LitElement) {
     <app-drawer opened="${_drawerOpened}"
         on-opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
-        <a selected?="${_page === 'view1'}" href="/view1">View One</a>
-        <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
-        <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'view1'}" href="/view1">Home</a>
         <a selected?="${_page === 'about'}" href="/about">About</a>
       </nav>
     </app-drawer>
@@ -218,14 +218,12 @@ class MyApp extends connect(store)(LitElement) {
     <!-- Main content -->
     <main role="main" class="main-content">
       <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
-      <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
-      <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
       <about-page class="page" active?="${_page === 'about'}"></about-page>
       <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
     </main>
 
     <footer>
-      <p>Made with &hearts; by the Polymer team.</p>
+      <p>Made by <a href="https://flavia.dev">flavia</a> with &hearts; using the PWA-starter-kit by the Polymer team.</p>
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">

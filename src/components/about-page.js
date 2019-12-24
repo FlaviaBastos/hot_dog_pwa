@@ -19,10 +19,10 @@ class About extends PageViewElement {
     return html`
       ${SharedStyles}
       <section>
-        <h2>Is it too hot for a walk?</h2>
-        <p>Summer days can get too hot to take your dog outside, even for a walk. Here you can check if you'd better play an indoor game instead.
-        <a href="/">home</a>
-        </p>
+        <h2>Is it too hot or too cold for a walk?</h2>
+        <p>Summer days can get too hot to take your dog outside, even for a walk. Winter is no different: sometimes is too cold for walkies!</p>
+        <p>Here you can check if you'd better play an indoor game instead.</p>
+        <p class="center-wrap"><a href="/">Home</a></p>
       </section>
     `
   }

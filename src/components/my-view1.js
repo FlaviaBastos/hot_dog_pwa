@@ -102,7 +102,7 @@ class MyView1 extends connect(store)(PageViewElement) {
   }
 
   _loadActivities () {
-    const indoorGames = ["fetch", "hide & seek", "indoor agility", "tug war"]
+    const indoorGames = ["Fetch", "Hide & seek", "Indoor agility", "Tug war"]
     
     return html`
       ${SharedStyles}
@@ -167,13 +167,13 @@ class MyView1 extends connect(store)(PageViewElement) {
       ${SharedStyles}
       <section>
         <h2>Current Condition</h2>
-        <p>You're in ${this.city}, ${this.region}</p>
-        <p>The temp is ${this.displayTemp ? displayFahr : this._fToC(this.fahr) } 
-        and the weather condition is ${this.condition}</p>
+        <p class="center-wrap">Showing weather conditions for ${this.city}.</p>
+        <p class="center-wrap">The temp is <strong>${this.displayTemp ? displayFahr : this._fToC(this.fahr)}</strong> 
+        and the weather condition is ${this.condition}.</p>
         <p class="center-wrap">${displayIcon}</p>
       </section>
       <section>
-        <p>${this._checkStatus(this.fahr)}</p>
+        <p class="center-wrap">${this._checkStatus(this.fahr)}</p>
         ${ this.state.games ? 
           this._loadActivities()
           : null 
