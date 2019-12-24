@@ -57,7 +57,7 @@ export const SharedStyles = html`
     line-height: 64px;
   }
 
-  .icon-wrap {
+  .center-wrap {
     display: block;
     text-align: center;
   }
@@ -66,6 +66,23 @@ export const SharedStyles = html`
     height: 10vh;
     width: 10vw;
     fill: #E91E63;
+  }
+
+  .toggle-switch {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .toggle-switch {
+
+  }
+
+  .toggle-switch-label {
+    margin: 0;
+  }
+  .toggle-switch-checkbox:checked + .toggle-switch-label {
+    text-decoration: underline;
+    text-decoration-color: #E91E63;
   }
 </style>
 `;

@@ -13,14 +13,22 @@ import { PageViewElement } from './page-view-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../store.js'
 import * as weatherIcons from './my-icons.js';
+import { changeTemp } from '../actions/temp';
+import displayTemp  from '../reducers/temp.js';
+
+store.addReducers({
+  displayTemp
+});
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles.js'
+import { SharedStyles } from './shared-styles.js';
 
 class MyView1 extends connect(store)(PageViewElement) {
   constructor() {
     super();
-    this.state = {games: false};
+    this.state = {
+      games: false
+    };
   }
 
   static get properties () {
@@ -28,7 +36,8 @@ class MyView1 extends connect(store)(PageViewElement) {
       city: { type: String },
       condition: { type: String },
       fahr: { type: String },
-      icon: { type: String }
+      icon: { type: String },
+      displayTemp: { type: Boolean }
     }
   }
 
@@ -93,14 +102,14 @@ class MyView1 extends connect(store)(PageViewElement) {
   }
 
   _loadActivities () {
-    const games = ["fetch", "hide & seek", "indoor agility", "tug war"]
+    const indoorGames = ["fetch", "hide & seek", "indoor agility", "tug war"]
     
     return html`
       ${SharedStyles}
       <section>
         <h3>Here are some suggestions:</h3>
         <ul>
-        ${games.map((game, index) =>
+        ${indoorGames.map((game, index) =>
           html`
             <li>${game}</li>
           `
@@ -145,16 +154,23 @@ class MyView1 extends connect(store)(PageViewElement) {
     return svgIcon;
   }
 
+  _fToC (fahr) {
+    let celsius = Math.round((5 / 9) * (fahr - 32))
+    return `${celsius}°C`
+  }
+
   _render (props) {
     let displayIcon = this._mapIcon(this.icon);
+    let displayFahr = `${Math.round(this.fahr)}°F`
 
     return html`
       ${SharedStyles}
       <section>
         <h2>Current Condition</h2>
         <p>You're in ${this.city}, ${this.region}</p>
-        <p>The temp is ${this.fahr} and the weather condition is ${this.condition}</p>
-        <p class="icon-wrap">${displayIcon}</p>
+        <p>The temp is ${this.displayTemp ? this._fToC(this.fahr) : displayFahr} 
+        and the weather condition is ${this.condition}</p>
+        <p class="center-wrap">${displayIcon}</p>
       </section>
       <section>
         <p>${this._checkStatus(this.fahr)}</p>
@@ -163,6 +179,21 @@ class MyView1 extends connect(store)(PageViewElement) {
           : null 
         }
       </section>
+      <div class="center-wrap">
+        <div class="toggle-switch">
+          <input
+              class="toggle-switch-checkbox"
+              type="checkbox"
+              name="toggleSwitch"
+              id="toggleSwitch"
+              on-click="${(e) => store.dispatch(changeTemp(e.currentTarget.checked))}"
+          />
+          <label class="toggle-switch-label" htmlFor="toggleSwitch">°C
+            <span class="toggle-switch-inner" />
+            <span class="toggle-switch-switch" />
+          </label>
+        </div>
+      </div>
     `
   }
 
@@ -171,6 +202,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     this.condition = state.weather.condition
     this.fahr = state.weather.fahr
     this.icon = state.weather.icon
+    this.displayTemp = state.displayTemp.checked
   }
 }
 

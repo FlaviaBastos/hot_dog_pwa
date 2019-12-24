@@ -97,11 +97,6 @@ export const updateDrawerState = (opened) => (dispatch, getState) => {
   }
 };
 
-function fToC (value) {
-  let res = Math.round((5 / 9) * (value - 32))
-  return res
-}
-
 export const fetchWeather = () => (dispatch) => {
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(`Lat: ${position.coords.latitude} Long: ${position.coords.longitude}`)
