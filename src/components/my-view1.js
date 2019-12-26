@@ -14,11 +14,6 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../store.js'
 import * as weatherIcons from './my-icons.js';
 import { changeTemp } from '../actions/temp';
-import displayTemp  from '../reducers/temp.js';
-
-store.addReducers({
-  displayTemp
-});
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';

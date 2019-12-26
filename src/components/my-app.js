@@ -29,7 +29,8 @@ import {
 } from '../actions/app.js'
 
 // Reducer
-import weather from '../reducers/weather.js'
+import weather from '../reducers/weather.js';
+import displayTemp  from '../reducers/temp.js';
 
 // These are the elements needed by this element.
 import '@polymer/app-layout/app-drawer/app-drawer.js'
@@ -40,7 +41,8 @@ import { menuIcon } from './my-icons.js'
 import './snack-bar.js'
 
 store.addReducers({
-  weather
+  weather,
+  displayTemp
 })
 
 class MyApp extends connect(store)(LitElement) {

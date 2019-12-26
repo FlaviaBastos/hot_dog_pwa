@@ -1,4 +1,4 @@
-import { RECEIVE_WEATHER, FAIL_WEATHER } from '../actions/app.js'
+import { RECEIVE_WEATHER, FAIL_WEATHER } from '../actions/weather.js'
 
 const weather = (state = {}, action) => {
   switch (action.type) {
