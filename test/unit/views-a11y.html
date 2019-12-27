@@ -26,24 +26,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Import the element to test -->
     <script type="module" src="../../src/components/my-view1.js"></script>
-    <script type="module" src="../../src/components/my-view2.js"></script>
-    <script type="module" src="../../src/components/my-view3.js"></script>
     <script type="module" src="../../src/components/my-view404.js"></script>
   </head>
   <body>
     <test-fixture id="view1">
       <template>
         <my-view1 active></my-view1>
-      </template>
-    </test-fixture>
-    <test-fixture id="view2">
-      <template>
-        <my-view2 active></my-view2>
-      </template>
-    </test-fixture>
-    <test-fixture id="view3">
-      <template>
-        <my-view3 active></my-view3>
       </template>
     </test-fixture>
     <test-fixture id="view404">
@@ -59,16 +47,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       suite('views a11y tests', function() {
         test('my-view1', function() {
           const el = fixture('view1');
-          return axeReport(el);
-        });
-
-        test('my-view2', function() {
-          const el = fixture('view2');
-          return axeReport(el);
-        });
-
-        test('my-view3', function() {
-          const el = fixture('view3');
           return axeReport(el);
         });
 

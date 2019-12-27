@@ -20,7 +20,7 @@ class MyView404 extends PageViewElement {
       ${SharedStyles}
       <section>
         <h2>Oops! You hit a 404</h2>
-        <p>The page you're looking for doesn't seem to exist. Head back
+        <p>The bone you are looking for could not be found. Head back
            <a href="/">home</a> and try again?
         </p>
       </section>
