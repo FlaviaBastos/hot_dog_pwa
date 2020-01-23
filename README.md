@@ -1,4 +1,4 @@
-# Built with PWA Starter Kit 💜
+# Built with PWA Starter Kit 💜 ![PWA Shields](https://www.pwa-shields.com/1.0.0/series/classic/white/gray.svg)
 
 ## 📖 Head over to the [documentation site](https://pwa-starter-kit.polymer-project.org/) for more details or check out [how to get started](https://pwa-starter-kit.polymer-project.org/setup)
 
