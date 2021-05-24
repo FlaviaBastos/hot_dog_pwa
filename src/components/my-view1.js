@@ -26,7 +26,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     };
   }
 
-  static get properties () {
+  static get properties() {
     return {
       city: { type: String },
       condition: { type: String },
@@ -36,7 +36,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     }
   }
 
-  _checkStatus (currTemp) {
+  _checkStatus(currTemp) {
     let status
     currTemp = parseInt(currTemp)
 
@@ -48,9 +48,9 @@ class MyView1 extends connect(store)(PageViewElement) {
     return status
   }
 
-  _coldCheck (temp) {
+  _coldCheck(temp) {
     let message;
-  
+
     switch (true) {
       case temp > 40 && temp <= 60:
         message = "Let all the dogs out!";
@@ -71,7 +71,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     return message;
   }
 
-  _hotCheck (temp) {
+  _hotCheck(temp) {
     let message;
     switch (true) {
       case temp > 60 && temp <= 64:
@@ -96,28 +96,28 @@ class MyView1 extends connect(store)(PageViewElement) {
     return message;
   }
 
-  _loadActivities () {
+  _loadActivities() {
     const indoorGames = ["Fetch", "Hide & seek", "Indoor agility", "Tug war"]
-    
+
     return html`
       ${SharedStyles}
       <section>
         <h3>Here are some suggestions:</h3>
         <ul>
         ${indoorGames.map((game, index) =>
-          html`
+      html`
             <li>${game}</li>
           `
-        )}
+    )}
         </ul>
       </section>
     `
   }
 
-  _mapIcon (name) {
+  _mapIcon(name) {
     let svgIcon;
 
-    switch (name.toLowerCase()) {
+    switch (name && name.toLowerCase()) {
       case "clouds":
         svgIcon = weatherIcons.clouds;
         break;
@@ -149,12 +149,12 @@ class MyView1 extends connect(store)(PageViewElement) {
     return svgIcon;
   }
 
-  _fToC (fahr) {
+  _fToC(fahr) {
     let celsius = Math.round((5 / 9) * (fahr - 32))
     return `${celsius}°C`
   }
 
-  _render (props) {
+  _render(props) {
     let displayIcon = this._mapIcon(this.icon);
     let displayFahr = `${Math.round(this.fahr)}°F`
 
@@ -169,10 +169,10 @@ class MyView1 extends connect(store)(PageViewElement) {
       </section>
       <section>
         <p class="center-wrap">${this._checkStatus(this.fahr)}</p>
-        ${ this.state.games ? 
-          this._loadActivities()
-          : null 
-        }
+        ${this.state.games ?
+        this._loadActivities()
+        : null
+      }
       </section>
       <div class="center-wrap">
         <div class="toggle-switch">
@@ -192,7 +192,7 @@ class MyView1 extends connect(store)(PageViewElement) {
     `
   }
 
-  _stateChanged (state) {
+  _stateChanged(state) {
     this.city = state.weather.city
     this.condition = state.weather.condition
     this.fahr = state.weather.fahr
