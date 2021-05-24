@@ -117,7 +117,7 @@ class MyView1 extends connect(store)(PageViewElement) {
   _mapIcon(name) {
     let svgIcon;
 
-    switch (name && name.toLowerCase()) {
+    switch (name.toLowerCase()) {
       case "clouds":
         svgIcon = weatherIcons.clouds;
         break;
