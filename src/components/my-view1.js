@@ -161,10 +161,10 @@ class MyView1 extends connect(store)(PageViewElement) {
     return html`
       ${SharedStyles}
       <section>
-        <h2>Current Condition</h2>
-        <p class="center-wrap">Showing weather conditions for ${this.city}.</p>
-        <p class="center-wrap">The temp is <strong>${this.displayTemp ? displayFahr : this._fToC(this.fahr)}</strong> 
-        and the weather condition is ${this.condition}.</p>
+        <p class="center-wrap">Showing weather conditions for</p>
+        <h2>${this.city}</h2>
+        <p class="center-wrap"><strong>${this.displayTemp ? displayFahr : this._fToC(this.fahr)}</strong> 
+        and ${this.condition}.</p>
         <p class="center-wrap">${displayIcon}</p>
       </section>
       <section>
