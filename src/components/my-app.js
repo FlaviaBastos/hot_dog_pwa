@@ -225,7 +225,7 @@ class MyApp extends connect(store)(LitElement) {
     </main>
 
     <footer>
-      <p>Made by <a href="https://flavia.dev">flavia</a> with &hearts; using the PWA-starter-kit by the Polymer team.</p>
+      <p>Made by <a href="https://flaviabastos.ca">flávia</a> with &hearts; using the PWA-starter-kit by the Polymer team.</p>
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
